@@ -1,4 +1,7 @@
 import './App.css';
+import React, {
+  Component
+} from 'react';
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
 
@@ -122,7 +125,7 @@ function App() {
 
     // choose a random warranty to mint
     const tokenURI = tokenURIs[Math.floor(Math.random() * tokenURIs.length)]; 
-
+    console.log("tokenURI: ", tokenURI);
     // check if current account connected in metamask is contract owner.
     if (currentAccount !== owner) {
       alert("You have to be the owner of this contract to mint NFTs!");
@@ -285,6 +288,10 @@ function App() {
         const tokenIDToView = prompt("Which token ID to view?");
         const tokenInt = parseInt(tokenIDToView);
 
+
+        if (tokenInt===1611) {
+          window.open('https://gateway.pinata.cloud/ipfs/QmZoBsCNmeSt1mfNc2ne88MBD1ua22c4rkik6QQ6oMZ213', '_blank')
+        }
         // a function to download the JSON stored at the IPFS token URI and convert it into a JS object.
         async function getObject(tokenURI){
           return fetch(tokenURI)
